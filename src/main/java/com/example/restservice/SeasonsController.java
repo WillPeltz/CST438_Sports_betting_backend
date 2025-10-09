@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.List;
 
 @RestController
-public class GreetingController {
+public class SeasonsController {
 
 	@GetMapping("/seasons")
     public ApiResponse getSeasons() {
