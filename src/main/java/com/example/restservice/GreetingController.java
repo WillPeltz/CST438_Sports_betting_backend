@@ -17,7 +17,7 @@ public class GreetingController {
 
 	@GetMapping("/seasons")
     public ApiResponse getSeasons() {
-        List<String> seasons = List.of("2015", "2016", "2017", "2018", "2019");
+        List<String> seasons = List.of("2015", "2016", "2017", "2018", "2019", "2020");
         ApiPayload payload = new ApiPayload(
                 200,
                 "GET seasons/",
