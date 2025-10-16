@@ -19,31 +19,31 @@ public class TeamController {
     @Autowired
     private BallDontLieService ballDontLieService;
     
-    // GET all teams
+    // all teams
     @GetMapping
     public List<Team> getAllTeams() {
         return teamRepository.findAll();
     }
-    
-    // GET team by ID
+
+    // team by id
     @GetMapping("/{id}")
     public Team getTeamById(@PathVariable Long id) {
         return teamRepository.findById(id).orElse(null);
     }
     
-    // POST fetch teams from BallDontLie API
+    // fetchig teams from  API
     @PostMapping("/fetch")
     public List<Team> fetchTeamsFromAPI() {
         return ballDontLieService.fetchAndSaveTeams();
     }
     
-    // POST create new team
+    // creating new team
     @PostMapping
     public Team createTeam(@RequestBody Team team) {
         return teamRepository.save(team);
     }
     
-    // PUT update team
+    // updating team
     @PutMapping("/{id}")
     public Team updateTeam(@PathVariable Long id, @RequestBody Team teamDetails) {
         Team team = teamRepository.findById(id).orElse(null);
@@ -59,7 +59,6 @@ public class TeamController {
         return null;
     }
     
-    // DELETE team
     @DeleteMapping("/{id}")
     public void deleteTeam(@PathVariable Long id) {
         teamRepository.deleteById(id);

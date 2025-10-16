@@ -34,13 +34,13 @@ public class Team {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
     
-    // Constructors
+    // constructors
     public Team() {
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
     }
     
-    // Getters and Setters
+    //gets and sets
     public Long getId() {
         return id;
     }
