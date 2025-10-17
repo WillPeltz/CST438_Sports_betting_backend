@@ -15,6 +15,9 @@ public class UserController {
     
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserService userService; 
     
     // all users
     @GetMapping
@@ -34,5 +37,18 @@ public class UserController {
     @PostMapping
     public User createUser(@RequestBody User user) {
         return userRepository.save(user);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> loginUser(@RequestBody LoginRequest loginRequest) {
+        Optional<User> userOptional = userService.loginUser(
+            loginRequest.getUsername(),
+            loginRequest.getPassword(),
+        );
+        if(userOptional.isPresent()) {
+            return ResponseEntity.ok(userOptional.get());
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
+        }
     }
 }
