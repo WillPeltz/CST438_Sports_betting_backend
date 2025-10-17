@@ -6,12 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-
-
 @RestController
 @RequestMapping("/api/players")
 @CrossOrigin(origins = "*")
 public class PlayerController {
+    
+    @Autowired
+    private PlayerService playerService;
     
     @Autowired
     private PlayerRepository playerRepository;
@@ -36,7 +37,7 @@ public class PlayerController {
     public List<Player> fetchPlayersFromAPI() {
         return ballDontLieService.fetchAndSavePlayers();
     }
-    
+
     // players by team
     @GetMapping("/team/{teamId}")
     public List<Player> getPlayersByTeam(@PathVariable Long teamId) {
