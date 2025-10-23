@@ -11,8 +11,6 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class PlayerController {
     
-    @Autowired
-    private PlayerService playerService;
     
     @Autowired
     private PlayerRepository playerRepository;

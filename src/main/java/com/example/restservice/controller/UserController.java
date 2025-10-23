@@ -1,7 +1,9 @@
 package com.example.restservice.controller;
-
+import java.util.Optional;
+import org.springframework.http.HttpStatus;
 import com.example.restservice.entity.User;
 import com.example.restservice.repository.UserRepository;
+import com.example.restservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,10 +43,7 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody LoginRequest loginRequest) {
-        Optional<User> userOptional = userService.loginUser(
-            loginRequest.getUsername(),
-            loginRequest.getPassword(),
-        );
+        Optional<User> userOptional = userService.loginUser(loginRequest.getUsername(), loginRequest.getPassword());
         if(userOptional.isPresent()) {
             return ResponseEntity.ok(userOptional.get());
         } else {
