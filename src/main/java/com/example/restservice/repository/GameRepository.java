@@ -11,6 +11,7 @@ import java.util.List;
 
 @Repository
 public interface GameRepository extends JpaRepository<Game, Long> {
+
     
     //  games by date 
     List<Game> findByDateBetween(LocalDateTime startDate, LocalDateTime endDate);
