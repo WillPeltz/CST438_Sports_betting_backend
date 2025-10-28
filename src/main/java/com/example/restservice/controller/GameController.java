@@ -21,7 +21,7 @@ public class GameController {
     private BallDontLieService ballDontLieService;
     
     // GET all games
-    @GetMapping
+    @GetMapping("/getAllGames")
     public List<Game> getAllGames() {
         return gameRepository.findAll();
     }
