@@ -16,9 +16,9 @@ public class SecurityConfig {
 
      // Let everything through during setup so the OAuth endpoints work cleanly
      .authorizeHttpRequests(auth -> auth
-       .requestMatchers("/public/**", "/actuator/**", "/dev/callback").permitAll()
-       .anyRequest().permitAll()
-     )
+      .requestMatchers("/public/**", "/actuator/**", "/dev/callback", "/api/auth/**").permitAll()
+      .anyRequest().permitAll()
+    )
 
      .oauth2Login(oauth -> oauth
        .successHandler((req, res, auth) -> {
